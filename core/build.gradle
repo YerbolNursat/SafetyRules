@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion ANDROID_COMPILE_SDK_VERSION
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion ANDROID_MIN_SDK_VERSION
+        targetSdkVersion ANDROID_TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    api "androidx.appcompat:appcompat:$appcompat"
+    api "androidx.core:core-ktx:$androidxCoreKtx"
+
+    // Constraint layout
+    api "androidx.constraintlayout:constraintlayout:$constraintlayout"
+
+    //view_dependensies
+    api "ru.egslava:MaskedEditText:$maskedPhoneNumberVersion"
+    api "com.sothree.slidinguppanel:library:$slidinguPpanelVersion"
+    api "com.github.florent37:kotlinpleaseanimate:$kotlinPleaseAnimateVersion"
+    api "com.google.android.material:material:$material"
+    api "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    api "com.github.bumptech.glide:glide:$glide"
+    api "com.github.bumptech.glide:okhttp3-integration:$glide"
+    api "com.sun.easysnackbar:easysnackbar:$snackbar"
+
+    //view_model_dependensies
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKxt"
+
+    //network_dependensies
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp3LogInterceptor"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServer"
+
+    //di_dependensies
+    api "org.koin:koin-android:$koinVersion"
+    api "org.koin:koin-android-scope:$koinVersion"
+    api "org.koin:koin-android-viewmodel:$koinVersion"
+    api "org.koin:koin-androidx-ext:$koinVersion"
+    api "org.koin:koin-androidx-scope:$koinVersion"
+    api "org.koin:koin-androidx-viewmodel:$koinVersion"
+    api "org.koin:koin-androidx-fragment:$koinVersion"
+    testImplementation "org.koin:koin-test:$koinVersion"
+
+    //security_dependensies
+    api "com.scottyab:secure-preferences-lib:$securePref"
+
+    //test_dependensies
+    testImplementation "junit:junit:$androidxJUnit"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJUnit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore"
+    androidTestImplementation "androidx.test:core-ktx:$testCoreKtx"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito"
+    testImplementation "androidx.arch.core:core-testing:$coreTestVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineTest"
+
+    //apollo_dependensies
+    implementation "com.apollographql.apollo:apollo-runtime:$apolloVersion"
+    implementation "com.apollographql.apollo:apollo-android-support:$apolloVersion"
+    implementation "com.apollographql.apollo:apollo-coroutines-support:$apolloVersion"
+
+    // Groupie
+    api "com.xwray:groupie:$groupie"
+    api "com.xwray:groupie-kotlin-android-extensions:$groupie"
+    api "com.xwray:groupie-viewbinding:$groupie"
+
+    //nav_dependensies
+    api "androidx.navigation:navigation-fragment-ktx:$navigationComponent"
+    api "androidx.navigation:navigation-ui-ktx:$navigationComponent"
+
+    //include_dependensies
+    kapt "com.github.bumptech.glide:compiler:$glide"
+    api "com.caverock:androidsvg-aar:$androidSVGVersion"
+    api "com.github.florent37:inline-activity-result-kotlin:$inlineActivityResultVersion"
+    api "com.github.florent37:runtime-permission:$runtimePermission"
+
+    // Timber
+    api "com.jakewharton.timber:timber:$timber"
+
+}
+

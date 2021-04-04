@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#267CCC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="secondary">#FFBB37</color>
+    <color name="black">#151C22</color>
+    <color name="gray">#667A8B</color>
+    <color name="gray_light">#8897A5</color>
+    <color name="divider_mobile">#DDE1E5</color>
+    <color name="divider_desktop">#EEF0F2</color>
+    <color name="background">#F6F6F6</color>
+    <color name="background_blue">#F3F5F6</color>
+    <color name="oc_1">#D0DFED</color>
+    <color name="oc_2">#F3F9FF</color>
+    <color name="oc_3">#F5E6C7</color>
+    <color name="oc_4">#F6F2E9</color>
+    <color name="oc_5">#FFF5F4</color>
+    <color name="red">#F5463B</color>
+    <color name="green">#90BC34</color>
+    <color name="divider">#1F000000</color>
+
+</resources>

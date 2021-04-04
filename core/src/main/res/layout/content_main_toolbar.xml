@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="homeToolbar"
+            type="kz.telecom.core.core_application.presentation.ui.widget.toolbar.MainToolbar" />
+
+    </data>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@android:color/transparent"
+        android:clipToPadding="false"
+        android:elevation="@dimen/dp_0"
+        android:fitsSystemWindows="false"
+        android:stateListAnimator="@null"
+        tools:layout_height="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ic_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_8"
+                android:onClick="@{_ -> homeToolbar.onClick() }"
+                android:src="@drawable/ic_avatar_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:gravity="left"
+                android:maxLines="1"
+                android:onClick="@{_ -> homeToolbar.onClick() }"
+                android:text="@{homeToolbar.text}"
+                android:textColor="@color/black"
+                android:theme="@style/Heading4"
+                android:visibility="@{homeToolbar.needShowNameOfPage ? View.VISIBLE : View.GONE }"
+                tools:text="SomeText" />
+
+
+            <ImageView
+                android:id="@+id/ic_arrow_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{_ -> homeToolbar.onClick() }"
+                android:src="@drawable/ic_arrow_down"
+                android:visibility="@{homeToolbar.needShowSpinnerArrow ? View.VISIBLE : View.GONE }" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ic_more_options"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:onClick="@{_ -> homeToolbar.onOptionClick() }"
+                android:padding="@dimen/dp_8"
+                android:visibility="@{homeToolbar.needShowMoreOption ? View.VISIBLE : View.INVISIBLE }"
+                app:load="@{homeToolbar.moreOptionIcon}"
+                tools:src="@drawable/ic_defailt_more_options"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

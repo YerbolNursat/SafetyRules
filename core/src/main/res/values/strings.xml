@@ -1,0 +1,38 @@
+<resources>
+
+    <!--    Common-->
+    <string name="text_ok">Хорошо</string>
+    <string name="text_cancel">Отмена</string>
+    <string name="title_cancel">Отменить</string>
+    <string name="text_all">Все</string>
+    <string name="text_continue">Продолжить</string>
+    <string name="text_error_select_city">Выберите город</string>
+    <string name="text_send_sms">Получить SMS</string>
+    <string name="text_password">Пароль</string>
+    <string name="text_new_password">Новый пароль</string>
+    <string name="text_old_password">Старый пароль</string>
+    <string name="text_password_successfully_changed">Пароль успешно изменен</string>
+    <string name="text_confirm_password">Повторите пароль</string>
+    <string name="text_login">Войти</string>
+    <string name="text_loading">Секунду..</string>
+    <string name="text_loading_check">Проверка..</string>
+    <string name="text_pay">Оплатить</string>
+    <string name="text_details">Подробнее</string>
+    <string name="text_yesterday">Вчера</string>
+    <string name="text_today">Сегодня</string>
+    <string name="text_sample_number">7052388543</string>
+    <string name="text_home_sample_number">7272500005</string>
+    <string name="text_amount_of_money_in_month">тг/мес</string>
+    <string name="text_from">от</string>
+
+
+    <string name="text_exit_alert_title">Вы действительно хотите выйти из приложения?</string>
+    <string name="text_exit_alert_description">При выходе из профиля приложения необходимо будет повторно установить короткий код доступа, FaceID/TouchID. </string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+
+    <string name="text_request_location_permission">Перейти в настройки</string>
+    <string name="text_request_location_permission_text">Перейти в настройки</string>
+
+
+</resources>
