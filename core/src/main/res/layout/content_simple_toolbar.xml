@@ -11,7 +11,7 @@
 
         <variable
             name="simpleToolbar"
-            type="kz.telecom.core.core_application.presentation.content.CoreSimpleToolbar" />
+            type="kz.dungeonmasters.core.core_application.presentation.content.CoreSimpleToolbar" />
 
     </data>
 

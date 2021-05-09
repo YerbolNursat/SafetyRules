@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="kz.telecom.core.core_application.presentation.content.CoreMoneyEditText" />
+            type="kz.dungeonmasters.core.core_application.presentation.content.CoreMoneyEditText" />
 
     </data>
 

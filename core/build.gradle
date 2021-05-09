@@ -120,5 +120,8 @@ dependencies {
     // Timber
     api "com.jakewharton.timber:timber:$timber"
 
+    // GradientTextColor
+    api "com.github.Mursaat:AnimatedGradientTextView:$gradientTextColor"
+
 }
 

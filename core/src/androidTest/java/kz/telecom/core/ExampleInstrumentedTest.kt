@@ -1,4 +1,4 @@
-package kz.telecom.core
+package kz.dungeonmasters.core
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("kz.telecom.core.test", appContext.packageName)
+        assertEquals("kz.dungeonmasters.core.test", appContext.packageName)
     }
 }

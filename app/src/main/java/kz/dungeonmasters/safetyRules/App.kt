@@ -1,11 +1,12 @@
 package kz.dungeonmasters.safetyRules
 
 import androidx.multidex.MultiDexApplication
+import kz.dungeonmasters.auth.presentation.di.authModules
 import kz.dungeonmasters.main.presentation.di.mainModules
-import kz.telecom.core.core_application.data.constants.CoreConstant
-import kz.telecom.core.core_application.di.coreModule
-import kz.telecom.core.core_application.utils.extensions.coreBuilder
-import kz.telecom.core.core_application.utils.extensions.initLanguage
+import kz.dungeonmasters.core.core_application.data.constants.CoreConstant
+import kz.dungeonmasters.core.core_application.di.coreModule
+import kz.dungeonmasters.core.core_application.utils.extensions.coreBuilder
+import kz.dungeonmasters.core.core_application.utils.extensions.initLanguage
 import timber.log.Timber
 
 class App : MultiDexApplication() {
@@ -15,6 +16,7 @@ class App : MultiDexApplication() {
         coreBuilder {
             baseRetrofitUrl { BuildConfig.URL_BASE }
             koinModule { mainModules }
+            koinModule { authModules }
             koinModule { listOf(coreModule) }
             endpointUrlsNecessaryForAuthBearer {
                 listOf(CoreConstant.LOGOUT_END_POINT)

@@ -5,3 +5,4 @@ include ':feature:main_features'
 include ':app'
 include ':core'
 rootProject.name = "Safety Rules"
+include ':feature:auth'

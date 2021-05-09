@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="kz.dungeonmasters.auth.presentation.ui.welcome.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_welcome">
+
+        <ImageView
+            android:layout_width="@dimen/dp_240"
+            android:layout_height="@dimen/dp_240"
+            android:src="@drawable/ic_safety_rules"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_buttons"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_margin="@dimen/dp_16"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                android:id="@+id/btn_registration"
+                layout="@layout/button_secondary_white"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/btn_log_in"
+                layout="@layout/button_secondary_white"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

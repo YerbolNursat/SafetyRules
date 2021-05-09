@@ -7,10 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kz.dungeonmasters.main.R
-import kz.telecom.core.core_application.presentation.ui.activities.CoreAuthorizedActivity
-import kz.telecom.core.core_application.utils.extensions.gone
-import kz.telecom.core.core_application.utils.extensions.setupWithNavController
-import kz.telecom.core.core_application.utils.extensions.visible
+import kz.dungeonmasters.core.core_application.presentation.ui.activities.CoreAuthorizedActivity
+import kz.dungeonmasters.core.core_application.utils.extensions.gone
+import kz.dungeonmasters.core.core_application.utils.extensions.setupWithNavController
+import kz.dungeonmasters.core.core_application.utils.extensions.visible
 import timber.log.Timber
 
 class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {

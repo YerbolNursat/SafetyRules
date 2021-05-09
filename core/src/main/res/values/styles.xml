@@ -2,12 +2,12 @@
 
     <style name="LocalTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/background</item>
         <item name="colorAccent">@color/primary</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
         <item name="android:windowExitAnimation">@anim/slide_in_down</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/background</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/gradientStart</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTransparentTheme</item>
 
@@ -148,6 +148,73 @@
         <item name="android:padding">@dimen/dp_8</item>
         <item name="android:inputType">number</item>
         <item name="lineHeight">@dimen/sp_48</item>
+    </style>
+
+    <style name="H5Bold">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="lineHeight">@dimen/sp_24</item>
+    </style>
+
+    <style name="H5">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="lineHeight">@dimen/sp_24</item>
+    </style>
+
+    <style name="H6">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="lineHeight">@dimen/sp_24</item>
+    </style>
+
+    <style name="semiBold16">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="lineHeight">@dimen/sp_20</item>
+    </style>
+
+    <style name="regular16">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="lineHeight">@dimen/sp_24</item>
+        <item name="android:letterSpacing">-0.032</item>
+    </style>
+
+    <style name="semiBold14">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="lineHeight">@dimen/sp_20</item>
+    </style>
+
+    <style name="regular14">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="lineHeight">@dimen/sp_20</item>
+        <item name="android:letterSpacing">-0.032</item>
+    </style>
+
+    <style name="semiBold12">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="lineHeight">@dimen/sp_16</item>
+        <item name="android:letterSpacing">-0.028</item>
+    </style>
+
+    <style name="regular12">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="lineHeight">@dimen/sp_16</item>
+        <item name="android:letterSpacing">-0.028</item>
+    </style>
+    <style name="gradientTextView">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="lineHeight">@dimen/sp_20</item>
+        <item name="angle">45</item>
+        <item name="colors">@array/gradient</item>
+        <item name="maxFPS">30</item>
+        <item name="speed">1000</item>
     </style>
 
 </resources>

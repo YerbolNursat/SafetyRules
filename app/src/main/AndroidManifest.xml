@@ -5,7 +5,7 @@
 
     <application
         android:name=".App"
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:fullBackupContent="false"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -17,13 +17,18 @@
         android:theme="@style/LocalTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name="kz.dungeonmasters.main.presentation.ui.MainActivity">
+        <activity
+            android:name="kz.dungeonmasters.auth.presentation.ui.AuthActivity"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="kz.dungeonmasters.main.presentation.ui.MainActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

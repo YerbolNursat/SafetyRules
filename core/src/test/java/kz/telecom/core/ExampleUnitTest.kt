@@ -1,4 +1,4 @@
-package kz.telecom.core
+package kz.dungeonmasters.core
 
 import org.junit.Test
 

@@ -3,7 +3,7 @@ package kz.dungeonmasters.home.presentation.ui.home
 import kz.dungeonmasters.home.BR
 import kz.dungeonmasters.home.R
 import kz.dungeonmasters.home.databinding.FragmentHomeBinding
-import kz.telecom.core.core_application.presentation.ui.fragments.CoreFragment
+import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : CoreFragment<FragmentHomeBinding, HomeViewModel>() {

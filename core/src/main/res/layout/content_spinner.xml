@@ -9,7 +9,7 @@
 
         <variable
             name="data"
-            type="kz.telecom.core.core_application.presentation.content.CoreSpinner" />
+            type="kz.dungeonmasters.core.core_application.presentation.content.CoreSpinner" />
 
     </data>
 
