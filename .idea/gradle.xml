@@ -19,6 +19,10 @@
             <option value="$PROJECT_DIR$/feature/main" />
             <option value="$PROJECT_DIR$/feature/main_features" />
             <option value="$PROJECT_DIR$/feature/main_features/home" />
+            <option value="$PROJECT_DIR$/feature/main_features/messages" />
+            <option value="$PROJECT_DIR$/feature/main_features/profile" />
+            <option value="$PROJECT_DIR$/feature/main_features/search" />
+            <option value="$PROJECT_DIR$/feature/main_features/tests" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -45,7 +45,7 @@ android {
             versionName "1.0.0"
             buildConfigField "String", "BASIC_AUTH_HEADER", '"Basic QU5EUk9JRDo="'
             buildConfigField "Boolean", "IS_DEBUG", "true"
-            buildConfigField "String", "URL_BASE", '"https://kt-b2c-mobile.qazcloud.telecom.kz/"'
+            buildConfigField "String", "URL_BASE", '"http://safety-rules.herokuapp.com/"'
         }
 
     }

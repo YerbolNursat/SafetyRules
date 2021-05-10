@@ -8,12 +8,14 @@ import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.BaseBottomSheetDialogItem
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 
-class LogInUi() : BaseBottomSheetDialogItem() {
+class LogInUi(
+    private val actionOnClickLogIn: (() -> Unit)
+) : BaseBottomSheetDialogItem() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
             is ItemBottomLogInBinding -> {
                 viewBinding.item = this
-                standardInitButton(CoreButton("Вход", {}), viewBinding.btnLogIn.root)
+                standardInitButton(CoreButton("Вход", ::actionOnClickLogIn), viewBinding.btnLogIn.root)
             }
         }
     }
@@ -21,4 +23,10 @@ class LogInUi() : BaseBottomSheetDialogItem() {
     override fun getLayout(): Int = R.layout.item_bottom_log_in
     override fun initializeViewBinding(view: View): ViewDataBinding =
         ItemBottomLogInBinding.bind(view)
+
+    private fun actionOnClickLogIn() {
+        actionForClose?.invoke()
+        actionOnClickLogIn.invoke()
+    }
+
 }

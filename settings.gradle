@@ -6,3 +6,7 @@ include ':app'
 include ':core'
 rootProject.name = "Safety Rules"
 include ':feature:auth'
+include ':feature:main_features:search'
+include ':feature:main_features:tests'
+include ':feature:main_features:messages'
+include ':feature:main_features:profile'

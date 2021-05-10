@@ -40,7 +40,7 @@ object CoreConstant{
 
     const val MIN_VERSION_SUPPORT_DARK_MODE = 10
 
-    const val REFRESH_TOKEN_END_POINT = "auth/refresh"
+    const val REFRESH_TOKEN_END_POINT = "auth/login-refresh"
     const val LOGOUT_END_POINT = "auth/logout"
 
     const val MAIN_ACTIVITY = "kz.dungeonmasters.main.presentation.ui.MainActivity"

@@ -45,6 +45,10 @@ dependencies {
     //Projects
     implementation project(path: ':core')
     implementation project(path: ':feature:main_features:home')
+    implementation project(path: ':feature:main_features:messages')
+    implementation project(path: ':feature:main_features:tests')
+    implementation project(path: ':feature:main_features:search')
+    implementation project(path: ':feature:main_features:profile')
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$androidxJUnit"

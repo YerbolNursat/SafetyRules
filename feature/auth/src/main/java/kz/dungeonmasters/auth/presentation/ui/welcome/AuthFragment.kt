@@ -6,10 +6,13 @@ import kz.application.auth.BR
 import kz.application.auth.R
 import kz.application.auth.databinding.FragmentAuthBinding
 import kz.dungeonmasters.auth.presentation.ui.bottom_items.LogInUi
-import kz.dungeonmasters.auth.presentation.ui.bottom_items.RegistrationsPartOneUi
+import kz.dungeonmasters.auth.presentation.ui.bottom_items.RegistrationPartOneUi
+import kz.dungeonmasters.auth.presentation.ui.bottom_items.RegistrationPartTwoUi
+import kz.dungeonmasters.core.core_application.data.constants.CoreConstant
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.ModalBottomSheetDialog
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
+import kz.dungeonmasters.core.core_application.utils.extensions.showActivityAndClearBackStack
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,7 +40,7 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     private fun showRegistrationPartOneBottomSheet() {
         ModalBottomSheetDialog(
-            listOf(RegistrationsPartOneUi()),
+            listOf(RegistrationPartOneUi(::showRegistrationPartTwoBottomSheet)),
             requireContext(),
             true,
             peekHide = resources.displayMetrics.heightPixels
@@ -45,12 +48,17 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
     }
 
     private fun showRegistrationPartTwoBottomSheet() {
-
+        ModalBottomSheetDialog(
+            listOf(RegistrationPartTwoUi(::navigateToMainPage)),
+            requireContext(),
+            true,
+            peekHide = resources.displayMetrics.heightPixels
+        )
     }
 
     private fun showLogInPartOneBottomSheet() {
         ModalBottomSheetDialog(
-            listOf(LogInUi()),
+            listOf(LogInUi(::navigateToMainPage)),
             requireContext(),
             true,
             peekHide = resources.displayMetrics.heightPixels
@@ -59,6 +67,10 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     private fun showResetPasswordPartOneBottomSheet() {
 
+    }
+
+    private fun navigateToMainPage(){
+        activity?.showActivityAndClearBackStack(requireContext(),CoreConstant.MAIN_ACTIVITY)
     }
 
     override fun onStart() {

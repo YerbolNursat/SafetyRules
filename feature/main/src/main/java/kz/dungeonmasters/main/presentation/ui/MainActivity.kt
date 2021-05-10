@@ -43,7 +43,11 @@ class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val navGraphIds = listOf(
-            R.navigation.home_navigation
+            R.navigation.home_nav,
+            R.navigation.search_nav,
+            R.navigation.tests_nav,
+            R.navigation.messages_nav,
+            R.navigation.profile_nav,
         )
 
         val controller = bottomNavigationView.setupWithNavController(
@@ -68,8 +72,8 @@ class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
             Timber.i("addOnDestinationChangedListener ${destination.id}")
             with(findViewById<BottomNavigationView>(R.id.bottom_nav)) {
                 when (destination.id) {
-                    R.id.homeFragment -> visible()
-                    else -> gone()
+//                    R.id.homeFragment -> visible()
+//                    else -> gone()
                 }
             }
         }

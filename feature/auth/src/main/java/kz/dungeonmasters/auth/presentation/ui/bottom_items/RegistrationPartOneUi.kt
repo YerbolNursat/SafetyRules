@@ -8,12 +8,14 @@ import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.BaseBottomSheetDialogItem
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 
-class RegistrationsPartOneUi():BaseBottomSheetDialogItem() {
+class RegistrationPartOneUi(
+    private val actionOnClick: (() -> Unit)
+) : BaseBottomSheetDialogItem() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
             is ItemBottomRegistrationPartOneBinding -> {
                 viewBinding.item = this
-                standardInitButton(CoreButton("Далле", {}), viewBinding.btnNext.root)
+                standardInitButton(CoreButton("Далее", ::actionOnClick), viewBinding.btnNext.root)
             }
         }
     }
@@ -21,4 +23,9 @@ class RegistrationsPartOneUi():BaseBottomSheetDialogItem() {
     override fun getLayout(): Int = R.layout.item_bottom_registration_part_one
     override fun initializeViewBinding(view: View): ViewDataBinding =
         ItemBottomRegistrationPartOneBinding.bind(view)
+
+    private fun actionOnClick() {
+        actionForClose?.invoke()
+        actionOnClick.invoke()
+    }
 }

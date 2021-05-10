@@ -14,11 +14,6 @@ import kz.dungeonmasters.core.core_application.R
 import kz.dungeonmasters.core.core_application.databinding.ContentAlertDialogBinding
 import kz.dungeonmasters.core.core_application.utils.extensions.gone
 
-/*
-    На Время захордкожен потом сделаю лучше
-    Пока дизайна нет, так что дефолт будем использовать
-    CoreAlertDialog
-*/
 
 class ModalAlertDialog(
     fm: FragmentManager,

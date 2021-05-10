@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tests_nav"
+    app:startDestination="@id/testsFragment">
+
+    <fragment
+        android:id="@+id/testsFragment"
+        android:name="kz.dungeonmasters.tests.presentation.ui.tests.TestsFragment"
+        android:label="TestsFragment" />
+
+</navigation>
