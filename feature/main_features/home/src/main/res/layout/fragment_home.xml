@@ -13,8 +13,10 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
+        android:background="@color/background"
         android:layout_height="match_parent">
-
+        <include
+            layout="@layout/content_loading"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
