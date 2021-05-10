@@ -4,18 +4,24 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import kz.application.auth.R
 import kz.application.auth.databinding.ItemBottomLogInBinding
+import kz.dungeonmasters.auth.domain.usecase.LoginUseCase
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.BaseBottomSheetDialogItem
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 
 class LogInUi(
-    private val actionOnClickLogIn: (() -> Unit)
+    private val actionOnClickLogIn: ((LoginUseCase.Params) -> Unit)
 ) : BaseBottomSheetDialogItem() {
+    lateinit var binding: ItemBottomLogInBinding
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
             is ItemBottomLogInBinding -> {
                 viewBinding.item = this
-                standardInitButton(CoreButton("Вход", ::actionOnClickLogIn), viewBinding.btnLogIn.root)
+                binding = viewBinding
+                standardInitButton(
+                    CoreButton("Вход", ::actionOnClickLogIn),
+                    viewBinding.btnLogIn.root
+                )
             }
         }
     }
@@ -25,8 +31,12 @@ class LogInUi(
         ItemBottomLogInBinding.bind(view)
 
     private fun actionOnClickLogIn() {
-        actionForClose?.invoke()
-        actionOnClickLogIn.invoke()
+        actionOnClickLogIn.invoke(
+            LoginUseCase.Params(
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString()
+            )
+        )
     }
 
 }

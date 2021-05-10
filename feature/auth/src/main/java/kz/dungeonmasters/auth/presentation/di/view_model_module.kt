@@ -5,5 +5,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val authViewModelModule = module {
-    viewModel { AuthViewModel() }
+    viewModel { AuthViewModel(registerSendEmailUseCase = get(),registerUseCase = get(),loginUseCase = get()) }
 }

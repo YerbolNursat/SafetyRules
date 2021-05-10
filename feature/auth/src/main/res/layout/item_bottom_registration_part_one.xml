@@ -31,6 +31,7 @@
             android:textColor="@color/defaultGray" />
 
         <EditText
+            android:id="@+id/et_email"
             style="@style/regular14"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_44"

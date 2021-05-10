@@ -12,11 +12,17 @@ import kz.dungeonmasters.core.core_application.data.constants.CoreConstant
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.ModalBottomSheetDialog
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
+import kz.dungeonmasters.core.core_application.utils.events.EventObserver
 import kz.dungeonmasters.core.core_application.utils.extensions.showActivityAndClearBackStack
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
+
+    private var registrationPartOneBottomSheet: ModalBottomSheetDialog? = null
+    private var registrationPartTwoBottomSheet: ModalBottomSheetDialog? = null
+    private var loginBottomSheet: ModalBottomSheetDialog? = null
+
     override val viewModel: AuthViewModel by viewModel()
 
     override fun getBindingVariable(): Int = BR.viewModel
@@ -33,49 +39,75 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
                 showRegistrationPartOneBottomSheet()
             }), btnLogIn.root)
             standardInitButton(CoreButton("Вход", {
-                showLogInPartOneBottomSheet()
+                showLogInBottomSheet()
             }), btnRegistration.root)
         }
     }
 
+    override fun showLoader() {
+        super.showLoader()
+        registrationPartOneBottomSheet?.showLoader()
+        registrationPartTwoBottomSheet?.showLoader()
+        loginBottomSheet?.showLoader()
+    }
+
+    override fun hideLoader() {
+        super.hideLoader()
+        registrationPartOneBottomSheet?.hideLoader()
+        registrationPartTwoBottomSheet?.hideLoader()
+        loginBottomSheet?.hideLoader()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.sendEmailUseCase.observe(viewLifecycleOwner, EventObserver(::showRegistrationPartTwoBottomSheet))
+        viewModel.register.observe(viewLifecycleOwner, EventObserver(::navigateToMainPage))
+        viewModel.login.observe(viewLifecycleOwner, EventObserver(::navigateToMainPage))
+    }
+
     private fun showRegistrationPartOneBottomSheet() {
-        ModalBottomSheetDialog(
-            listOf(RegistrationPartOneUi(::showRegistrationPartTwoBottomSheet)),
-            requireContext(),
-            true,
-            peekHide = resources.displayMetrics.heightPixels
-        )
+        with(viewModel) {
+            registrationPartOneBottomSheet = ModalBottomSheetDialog(
+                listOf(RegistrationPartOneUi(::registerSendEmail)),
+                requireContext(),
+                true,
+                peekHide = resources.displayMetrics.heightPixels
+            )
+        }
     }
 
-    private fun showRegistrationPartTwoBottomSheet() {
-        ModalBottomSheetDialog(
-            listOf(RegistrationPartTwoUi(::navigateToMainPage)),
-            requireContext(),
-            true,
-            peekHide = resources.displayMetrics.heightPixels
-        )
+    private fun showRegistrationPartTwoBottomSheet(data: Any) {
+        with(viewModel) {
+            registrationPartOneBottomSheet?.dismiss()
+            registrationPartTwoBottomSheet = ModalBottomSheetDialog(
+                listOf(RegistrationPartTwoUi(::register)),
+                requireContext(),
+                true,
+                peekHide = resources.displayMetrics.heightPixels
+            )
+        }
     }
 
-    private fun showLogInPartOneBottomSheet() {
-        ModalBottomSheetDialog(
-            listOf(LogInUi(::navigateToMainPage)),
-            requireContext(),
-            true,
-            peekHide = resources.displayMetrics.heightPixels
-        )
+    private fun showLogInBottomSheet() {
+        with(viewModel) {
+            loginBottomSheet= ModalBottomSheetDialog(
+                listOf(LogInUi(::login)),
+                requireContext(),
+                true,
+                peekHide = resources.displayMetrics.heightPixels
+            )
+        }
     }
 
     private fun showResetPasswordPartOneBottomSheet() {
 
     }
 
-    private fun navigateToMainPage(){
-        activity?.showActivityAndClearBackStack(requireContext(),CoreConstant.MAIN_ACTIVITY)
-    }
-
-    override fun onStart() {
-        super.onStart()
-
+    private fun navigateToMainPage(data: Any?) {
+        registrationPartTwoBottomSheet?.dismiss()
+        registrationPartOneBottomSheet?.dismiss()
+        loginBottomSheet?.dismiss()
+        activity?.showActivityAndClearBackStack(requireContext(), CoreConstant.MAIN_ACTIVITY)
     }
 
 }

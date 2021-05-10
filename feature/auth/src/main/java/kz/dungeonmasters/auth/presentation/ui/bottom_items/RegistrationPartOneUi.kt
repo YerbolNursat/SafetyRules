@@ -4,17 +4,20 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import kz.application.auth.R
 import kz.application.auth.databinding.ItemBottomRegistrationPartOneBinding
+import kz.dungeonmasters.auth.domain.usecase.RegisterSendEmailUseCase
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.BaseBottomSheetDialogItem
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 
 class RegistrationPartOneUi(
-    private val actionOnClick: (() -> Unit)
+    private val actionOnClick: ((RegisterSendEmailUseCase.Params) -> Unit)
 ) : BaseBottomSheetDialogItem() {
+    lateinit var binding: ItemBottomRegistrationPartOneBinding
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
             is ItemBottomRegistrationPartOneBinding -> {
                 viewBinding.item = this
+                binding=viewBinding
                 standardInitButton(CoreButton("Далее", ::actionOnClick), viewBinding.btnNext.root)
             }
         }
@@ -25,7 +28,6 @@ class RegistrationPartOneUi(
         ItemBottomRegistrationPartOneBinding.bind(view)
 
     private fun actionOnClick() {
-        actionForClose?.invoke()
-        actionOnClick.invoke()
+        actionOnClick.invoke(RegisterSendEmailUseCase.Params(binding.etEmail.text.toString()))
     }
 }
