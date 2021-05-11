@@ -5,13 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import kz.dungeonmasters.auth.domain.usecase.LoginUseCase
 import kz.dungeonmasters.auth.domain.usecase.RegisterSendEmailUseCase
 import kz.dungeonmasters.auth.domain.usecase.RegisterUseCase
+import kz.dungeonmasters.core.core_application.data.prefs.SecurityDataSource
 import kz.dungeonmasters.core.core_application.presentation.viewModel.CoreLaunchViewModel
 import kz.dungeonmasters.core.core_application.utils.events.Event
 
 class AuthViewModel(
     private val registerSendEmailUseCase: RegisterSendEmailUseCase,
     private val registerUseCase: RegisterUseCase,
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val securityDataSource: SecurityDataSource
 ) : CoreLaunchViewModel() {
     private var email: String? = null
 
@@ -37,13 +39,21 @@ class AuthViewModel(
     fun register(params: RegisterUseCase.Params) {
         params.email = email
         launch({ registerUseCase.execute(params) }, {
-            _register.postValue(Event(Any()))
+            it?.let {
+                securityDataSource.setAccessToken(it.access)
+                securityDataSource.setRefreshToken(it.refresh)
+                _register.postValue(Event(Any()))
+            }
         })
     }
 
     fun login(params: LoginUseCase.Params) {
         launch({ loginUseCase.execute(params) }, {
-            _login.postValue(Event(Any()))
+            it?.let {
+                securityDataSource.setAccessToken(it.access)
+                securityDataSource.setRefreshToken(it.refresh)
+                _login.postValue(Event(Any()))
+            }
         })
     }
 

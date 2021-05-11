@@ -9,12 +9,15 @@ import kz.dungeonmasters.auth.presentation.ui.bottom_items.LogInUi
 import kz.dungeonmasters.auth.presentation.ui.bottom_items.RegistrationPartOneUi
 import kz.dungeonmasters.auth.presentation.ui.bottom_items.RegistrationPartTwoUi
 import kz.dungeonmasters.core.core_application.data.constants.CoreConstant
+import kz.dungeonmasters.core.core_application.data.prefs.SecurityDataSource
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.ModalBottomSheetDialog
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
 import kz.dungeonmasters.core.core_application.utils.events.EventObserver
 import kz.dungeonmasters.core.core_application.utils.extensions.showActivityAndClearBackStack
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
+import kz.dungeonmasters.core.core_application.utils.extensions.visible
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
@@ -23,6 +26,8 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
     private var registrationPartTwoBottomSheet: ModalBottomSheetDialog? = null
     private var loginBottomSheet: ModalBottomSheetDialog? = null
 
+    private val securityDataSource: SecurityDataSource by inject()
+
     override val viewModel: AuthViewModel by viewModel()
 
     override fun getBindingVariable(): Int = BR.viewModel
@@ -30,7 +35,11 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initButtons()
+        if (securityDataSource.getAccessToken() == null) {
+            binding.llButtons.visible()
+            initButtons()
+        } else
+            navigateToMainPage(Any())
     }
 
     private fun initButtons() {
@@ -60,7 +69,10 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.sendEmailUseCase.observe(viewLifecycleOwner, EventObserver(::showRegistrationPartTwoBottomSheet))
+        viewModel.sendEmailUseCase.observe(
+            viewLifecycleOwner,
+            EventObserver(::showRegistrationPartTwoBottomSheet)
+        )
         viewModel.register.observe(viewLifecycleOwner, EventObserver(::navigateToMainPage))
         viewModel.login.observe(viewLifecycleOwner, EventObserver(::navigateToMainPage))
     }
@@ -90,7 +102,7 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     private fun showLogInBottomSheet() {
         with(viewModel) {
-            loginBottomSheet= ModalBottomSheetDialog(
+            loginBottomSheet = ModalBottomSheetDialog(
                 listOf(LogInUi(::login)),
                 requireContext(),
                 true,
