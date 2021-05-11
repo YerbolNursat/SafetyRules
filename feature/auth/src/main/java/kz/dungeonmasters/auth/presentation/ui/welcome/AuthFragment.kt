@@ -2,6 +2,9 @@ package kz.dungeonmasters.auth.presentation.ui.welcome
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kz.application.auth.BR
 import kz.application.auth.R
 import kz.application.auth.databinding.FragmentAuthBinding
@@ -38,8 +41,12 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
         if (securityDataSource.getAccessToken() == null) {
             binding.llButtons.visible()
             initButtons()
-        } else
-            navigateToMainPage(Any())
+        } else {
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(2000)
+                navigateToMainPage(Any())
+            }
+        }
     }
 
     private fun initButtons() {

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
 
         <variable
@@ -9,9 +12,285 @@
             type="kz.dungeonmasters.profile.presentation.ui.profile.ProfileViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_120"
+                    android:layout_height="@dimen/dp_120"
+                    android:layout_marginTop="@dimen/dp_48"
+                    android:src="@drawable/ic_photo" />
+
+                <TextView
+                    style="@style/H6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="Nickname"
+                    android:textColor="@color/defaultGray" />
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_44"
+                    android:text="nickname@mail.com"
+                    android:textColor="@color/secondary" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Редактировать личную информацию"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Достижения"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Push уведомления"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Правила использования приложения"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Политика конфиденсальности"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_16">
+
+                        <TextView
+                            style="@style/semiBold14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Связь с разработчиками"
+                            android:textColor="@color/defaultGray" />
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:src="@drawable/ic_next_default" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="Версия 1.0.1"
+                    android:textColor="@color/secondary" />
+
+                <include
+                    android:id="@+id/btn_log_out"
+                    layout="@layout/button_secondary_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_margin="@dimen/dp_16" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/content_loading"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE }"
+            tools:visibility="gone" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
