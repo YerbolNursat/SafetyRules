@@ -38,7 +38,7 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (securityDataSource.getAccessToken() == null) {
+        if (securityDataSource.getAccessPinCode().isNullOrEmpty() || securityDataSource.getRefreshToken().isNullOrEmpty()) {
             binding.llButtons.visible()
             initButtons()
         } else {

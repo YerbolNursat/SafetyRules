@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="item"
+            type="kz.dungeonmasters.home.presentation.ui.models.CategoryCardUi" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_120"
+        android:layout_margin="@dimen/dp_8"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="@{item._active}"
+        app:cardBackgroundColor="@color/secondaryWhite"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/semiBold14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_16"
+                android:text="@{item.title}"
+                android:textColor="@color/defaultGray" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_120"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                app:load="@{item.icon}" />
+            <ImageView
+                android:visibility="@{item._active ? View.GONE : View.VISIBLE}"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:src="@drawable/ic_lock"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

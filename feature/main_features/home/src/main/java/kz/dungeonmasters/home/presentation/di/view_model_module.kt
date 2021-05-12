@@ -5,5 +5,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val mainHomeViewModelModule = module {
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel(getCategories = get()) }
 }
