@@ -4,20 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kz.dungeonmasters.core.core_application.presentation.viewModel.CoreLaunchViewModel
 import kz.dungeonmasters.core.core_application.utils.extensions.transformFromOneObjectToAnother
-import kz.dungeonmasters.tests.domain.usecase.GetCategories
-import kz.dungeonmasters.tests.presentation.ui.models.CategoryCardUi
+import kz.dungeonmasters.tests.domain.usecase.GetTestsUseCase
+import kz.dungeonmasters.tests.presentation.ui.models.TestsWithScoreCardUi
 
 class TestsViewModel(
-    private val getCategories: GetCategories
+    private val getTestsUseCase: GetTestsUseCase
 ) : CoreLaunchViewModel() {
-    private val _items = MutableLiveData<List<CategoryCardUi>>()
-    val items: LiveData<List<CategoryCardUi>>
+
+    private val _items = MutableLiveData<List<TestsWithScoreCardUi>>()
+    val items: LiveData<List<TestsWithScoreCardUi>>
         get() = _items
 
-    fun getItems() {
-        launch({ getCategories.execute(Any()) }, {
+    fun getItems(params: String) {
+        launch({ getTestsUseCase.execute(params) }, {
             it?.let {
-                _items.postValue(it.results.map { result -> result.transformFromOneObjectToAnother() })
+                _items.postValue(it.quizzes.map { result -> result.transformFromOneObjectToAnother() })
             }
         })
     }

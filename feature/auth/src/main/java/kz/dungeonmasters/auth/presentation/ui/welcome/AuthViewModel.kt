@@ -8,6 +8,7 @@ import kz.dungeonmasters.auth.domain.usecase.RegisterUseCase
 import kz.dungeonmasters.core.core_application.data.prefs.SecurityDataSource
 import kz.dungeonmasters.core.core_application.presentation.viewModel.CoreLaunchViewModel
 import kz.dungeonmasters.core.core_application.utils.events.Event
+import timber.log.Timber
 
 class AuthViewModel(
     private val registerSendEmailUseCase: RegisterSendEmailUseCase,

@@ -23,10 +23,7 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.LinearInterpolator
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
@@ -520,4 +517,11 @@ fun ViewPager2.ignorePullToRefresh(swipeRefreshLayout: SwipeRefreshLayout) {
             }
         }
     })
+}
+
+@BindingAdapter("previewVideo")
+fun VideoView.previewVideo(url: String) {
+    setVideoPath(url)
+    seekTo(100)
+
 }

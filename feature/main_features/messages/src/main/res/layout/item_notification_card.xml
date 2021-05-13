@@ -49,14 +49,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_6"
                     android:layout_weight="1"
-                    android:text="Tests"
+                    android:text="@{item.nameOfNotification}"
                     android:textColor="@color/secondary" />
 
                 <TextView
                     style="@style/regular14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="now"
+                    android:text="@{item.date}"
                     android:textColor="@color/secondary" />
 
                 <ImageView
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_4"
-                android:text="Поздравляем!"
+                android:text="@{item.title}"
                 android:textColor="@color/defaultGray" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_marginTop="@dimen/dp_2"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="Вы прошли весь раздел правил первой помощи. Пройдите тесты для проверки знаний и получити звание..."
+                android:text="@{item.subTitle}"
                 android:textColor="@color/defaultGray" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

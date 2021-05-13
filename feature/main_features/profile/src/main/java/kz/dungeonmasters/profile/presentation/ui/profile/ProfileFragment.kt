@@ -2,10 +2,9 @@ package kz.dungeonmasters.profile.presentation.ui.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import kz.dungeonmasters.core.core_application.data.constants.CoreConstant
-import kz.dungeonmasters.core.core_application.data.network.Logout
 import kz.dungeonmasters.core.core_application.data.prefs.SecurityDataSource
-import kz.dungeonmasters.core.core_application.data.prefs.SharedPrefLayer
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
 import kz.dungeonmasters.core.core_application.utils.extensions.showActivityAndClearBackStack
@@ -30,12 +29,15 @@ class ProfileFragment : CoreFragment<FragmentProfileBinding, ProfileViewModel>()
     }
 
     private fun initButtons() {
-        standardInitButton(CoreButton("Выйти",(::logOut)), binding.btnLogOut.root)
+        standardInitButton(CoreButton("Выйти", (::logOut)), binding.btnLogOut.root)
+        binding.btnToEditProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
     }
 
-    private fun logOut(){
+    private fun logOut() {
         securityDataSource.clearAuthorizedUserData()
-        activity?.showActivityAndClearBackStack(requireContext(),CoreConstant.AUTH_ACTIVITY)
+        activity?.showActivityAndClearBackStack(requireContext(), CoreConstant.AUTH_ACTIVITY)
     }
 
 

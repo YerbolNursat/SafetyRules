@@ -62,8 +62,6 @@ class OAuthInterceptor : Interceptor, KoinComponent {
                  */
                 val refreshTokenBody = RefreshTokenRequestDTO(
                     refreshToken,
-                    GRANT_TYPE_REFRESH_TOKEN,
-                    OPERATOR
                 )
 
                 /**
@@ -74,7 +72,6 @@ class OAuthInterceptor : Interceptor, KoinComponent {
                     .newBuilder()
                     .post(body)
                     .url(BASE_URL + REFRESH_TOKEN_END_POINT)
-                    .addOAuthHeader(BASIC_REFRESH_AUTH_HEADER)
                     .build()
 
                 val refreshResponse = chain.proceed(refreshTokenRequest)
@@ -131,7 +128,7 @@ class OAuthInterceptor : Interceptor, KoinComponent {
      * @param chain Interceptor.Chain
      */
     private fun call401AndClearUserData(chain: Interceptor.Chain): Response {
-        firebaseLogout.logout(null, pref.getAccessToken())
+//        firebaseLogout.logout(null, pref.getAccessToken())
         pref.clearAuthorizedUserData()
         return chain.proceed(chain.request()).newBuilder()
             .code(HttpURLConnection.HTTP_UNAUTHORIZED).build()

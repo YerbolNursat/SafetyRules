@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 data class RefreshTokenRequestDTO(
     @SerializedName("refresh") val refresh_token: String,
-    @SerializedName("grant_type") val grant_type: String,
-    @SerializedName("operator") val operator: String
 )
 
 

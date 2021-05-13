@@ -8,6 +8,31 @@
         android:id="@+id/homeFragment"
         android:name="kz.dungeonmasters.home.presentation.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_theoryFragment"
+            app:destination="@id/theoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/theoryFragment"
+        android:name="kz.dungeonmasters.home.presentation.ui.theory.TheoryFragment"
+        android:label="TheoryFragment"
+        tools:layout="@layout/fragment_theory" >
+        <action
+            android:id="@+id/action_theoryFragment_to_pdfViewerFragment"
+            app:destination="@id/pdfViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfViewerFragment"
+        android:name="kz.dungeonmasters.home.presentation.ui.pdf_viewer.PdfViewerFragment"
+        android:label="PdfViewerFragment" >
+        <argument
+            android:name="filePath"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>

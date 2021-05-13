@@ -31,14 +31,9 @@ class NotificationsFragment : CoreFragment<FragmentNotificationBinding, Notifica
 
     private fun setData() {
         val data = listOf(
-            NotificationCardUi(true),
-            NotificationCardUi(true),
-            NotificationCardUi(true),
-            NotificationCardUi(true),
-            NotificationCardUi(false),
-            NotificationCardUi(false),
-            NotificationCardUi(false),
-            NotificationCardUi(false)
+            NotificationCardUi(false,"Достижение","Сегодня","Теория","Поздравляем! Вы впервые изучили теорию"),
+            NotificationCardUi(true,"Достижение","Сегодня","Тест","Поздравляем! Вы впервые прошли тест"),
+            NotificationCardUi(true,"Достижение","Сегодня","Тест","Поздравляем! Вы прошли тест без единой ошибки"),
         )
         groupAdapter.updateAsync(data)
     }

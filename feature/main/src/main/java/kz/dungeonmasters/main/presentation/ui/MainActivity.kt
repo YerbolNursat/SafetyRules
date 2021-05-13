@@ -72,8 +72,8 @@ class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
             Timber.i("addOnDestinationChangedListener ${destination.id}")
             with(findViewById<BottomNavigationView>(R.id.bottom_nav)) {
                 when (destination.id) {
-//                    R.id.homeFragment -> visible()
-//                    else -> gone()
+                    R.id.pdfViewerFragment -> gone()
+                    else -> visible()
                 }
             }
         }

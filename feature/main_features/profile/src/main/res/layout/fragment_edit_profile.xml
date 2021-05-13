@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="kz.dungeonmasters.profile.presentation.ui.edit_profile.EditProfileViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/regular16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Отменить"
+                        android:textColor="@color/secondary" />
+
+                    <TextView
+                        style="@style/H6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Редактирование"
+                        android:textColor="@color/defaultGray" />
+
+                    <com.mursaat.extendedtextview.AnimatedGradientTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Сохранить"
+                        android:theme="@style/gradientTextView" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/dp_120"
+                    android:layout_height="@dimen/dp_120"
+                    android:layout_marginTop="@dimen/dp_48"
+                    android:src="@drawable/ic_karina" />
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:text="Имя пользователя"
+                    android:textColor="@color/defaultGray" />
+
+                <EditText
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="@drawable/bg_secondary_r8"
+                    android:hint="Введите вашу почту"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:textColor="@color/defaultGray" />
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="Email"
+                    android:textColor="@color/defaultGray" />
+
+                <EditText
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="@drawable/bg_secondary_r8"
+                    android:hint="Введите вашу почту"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:textColor="@color/defaultGray" />
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="Номер телефона"
+                    android:textColor="@color/defaultGray" />
+
+                <EditText
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="@drawable/bg_secondary_r8"
+                    android:hint="Введите вашу почту"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:textColor="@color/defaultGray" />
+
+                <TextView
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="Пол"
+                    android:textColor="@color/defaultGray" />
+
+                <EditText
+                    style="@style/regular14"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="@drawable/bg_secondary_r8"
+                    android:hint="Введите вашу почту"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:textColor="@color/defaultGray" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/content_loading"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE }"
+            tools:visibility="gone" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

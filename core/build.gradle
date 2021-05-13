@@ -123,5 +123,8 @@ dependencies {
     // GradientTextColor
     api "com.github.Mursaat:AnimatedGradientTextView:$gradientTextColor"
 
+    // PDF viewer
+    api "com.github.barteksc:android-pdf-viewer:$pdfViewer"
+
 }
 

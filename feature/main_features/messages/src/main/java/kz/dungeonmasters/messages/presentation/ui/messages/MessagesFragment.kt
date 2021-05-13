@@ -30,7 +30,8 @@ class MessagesFragment : CoreFragment<FragmentMessagesBinding, MessagesViewModel
             CoreSimpleToolbar(
                 text = "Уведомление",
                 needShowBack= false,
-                needShowMoreOption = true
+                needShowMoreOption = true,
+                moreOptionIcon = R.drawable.ic_filter
             ), binding.toolbar.root
         )
     }

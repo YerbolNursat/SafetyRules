@@ -2,7 +2,9 @@ package kz.dungeonmasters.home.presentation.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -32,7 +34,10 @@ class HomeFragment : CoreFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun initToolbar() {
-        standardInitSimpleToolbar(CoreSimpleToolbar("Теория",needShowBack = false), binding.toolbar.root)
+        standardInitSimpleToolbar(
+            CoreSimpleToolbar("Теория", needShowBack = false),
+            binding.toolbar.root
+        )
     }
 
     private fun initViews() {
@@ -52,8 +57,17 @@ class HomeFragment : CoreFragment<FragmentHomeBinding, HomeViewModel>() {
                 }
             }
         }
-
         groupAdapter.updateAsync(data)
+        groupAdapter.setOnItemClickListener { item, view ->
+            when (item) {
+                is CategoryCardUi -> {
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_theoryFragment,
+                        bundleOf("CategoryCode" to item.code)
+                    )
+                }
+            }
+        }
     }
 
 }

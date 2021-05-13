@@ -2,15 +2,15 @@ package kz.dungeonmasters.tests.domain.usecase
 
 import kz.dungeonmasters.core.core_application.data.network.ResultApi
 import kz.dungeonmasters.core.core_application.domain.CoreUseCase
-import kz.dungeonmasters.tests.data.entity.CategoryResponse
+import kz.dungeonmasters.tests.data.entity.TestsResponse
 import kz.dungeonmasters.tests.data.repository.TestsRepository
 
-class GetCategories(
+class GetTestsUseCase(
     private val testsRepository: TestsRepository
-) : CoreUseCase<Any, CategoryResponse> {
+) : CoreUseCase<String, TestsResponse> {
 
-    override suspend fun execute(param: Any): ResultApi<CategoryResponse> {
-        return testsRepository.getCategories()
+    override suspend fun execute(param: String): ResultApi<TestsResponse> {
+        return testsRepository.getTests(param)
     }
 
 

@@ -22,6 +22,7 @@ import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButt
 import kz.dungeonmasters.core.core_application.utils.extensions.visible
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
@@ -38,7 +39,7 @@ class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (securityDataSource.getAccessPinCode().isNullOrEmpty() || securityDataSource.getRefreshToken().isNullOrEmpty()) {
+        if (securityDataSource.getAccessToken().isNullOrEmpty() || securityDataSource.getRefreshToken().isNullOrEmpty()) {
             binding.llButtons.visible()
             initButtons()
         } else {

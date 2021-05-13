@@ -2,11 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tests_nav"
-    app:startDestination="@id/testsFragment">
+    app:startDestination="@id/testsCatalogFragment">
 
+    <fragment
+        android:id="@+id/testsCatalogFragment"
+        android:name="kz.dungeonmasters.tests.presentation.ui.tests_catalog.TestsCatalogFragment"
+        android:label="TestsFragment" >
+        <action
+            android:id="@+id/action_testsCatalogFragment_to_testsFragment"
+            app:destination="@id/testsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/testsFragment"
         android:name="kz.dungeonmasters.tests.presentation.ui.tests.TestsFragment"
-        android:label="TestsFragment" />
+        android:label="TestsFragment" >
+        <action
+            android:id="@+id/action_testsFragment_to_testDetailFragment"
+            app:destination="@id/testDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testDetailFragment"
+        android:name="kz.dungeonmasters.tests.presentation.ui.test_detail.TestDetailFragment"
+        android:label="TestDetailFragment" />
 
 </navigation>
