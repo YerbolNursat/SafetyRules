@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val mainTestsViewModelModule = module {
     viewModel { TestsCatalogViewModel(getCategoriesUseCase = get()) }
     viewModel { TestsViewModel(getTestsUseCase = get()) }
-    viewModel { TestDetailViewModel() }
+    viewModel { TestDetailViewModel(getTestQuestionsUseCase = get(),checkTestUseCase = get()) }
 }

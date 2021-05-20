@@ -2,6 +2,7 @@ package kz.dungeonmasters.tests.presentation.ui.tests
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.xwray.groupie.GroupAdapter
@@ -12,6 +13,7 @@ import kz.dungeonmasters.core.core_application.utils.extensions.standardInitSimp
 import kz.dungeonmasters.tests.BR
 import kz.dungeonmasters.tests.R
 import kz.dungeonmasters.tests.databinding.FragmentTestsBinding
+import kz.dungeonmasters.tests.presentation.ui.models.CategoryCardUi
 import kz.dungeonmasters.tests.presentation.ui.models.TestsWithScoreCardUi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,6 +38,7 @@ class TestsFragment : CoreFragment<FragmentTestsBinding, TestsViewModel>() {
 
     private fun initViews() {
         binding.testsRv.adapter = groupAdapter
+
     }
 
     private fun initToolbar() {
@@ -50,7 +53,14 @@ class TestsFragment : CoreFragment<FragmentTestsBinding, TestsViewModel>() {
     private fun handleItems(data: List<TestsWithScoreCardUi>) {
         groupAdapter.updateAsync(data)
         groupAdapter.setOnItemClickListener { item, view ->
-            findNavController().navigate(R.id.action_testsFragment_to_testDetailFragment)
+            when (item) {
+                is TestsWithScoreCardUi -> {
+                    findNavController().navigate(
+                        R.id.action_testsFragment_to_testDetailFragment,
+                        bundleOf("TestId" to item.id)
+                    )
+                }
+            }
         }
 
     }

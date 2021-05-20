@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="item"
+            type="kz.dungeonmasters.tests.presentation.ui.models.TestQuestionNumberUi" />
+    </data>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/numberTv"
+        style="@style/regular16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        android:text="@{item.text}"
+        android:textColor="@{ContextCompat.getColor(context,item.value.numberColor)}" />
+
+</layout>

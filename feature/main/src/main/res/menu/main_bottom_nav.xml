@@ -6,10 +6,6 @@
         android:icon="@drawable/ic_education"
         android:title="@string/text_nav_home" />
     <item
-        android:id="@+id/search_nav"
-        android:icon="@drawable/ic_search"
-        android:title="@string/text_nav_home" />
-    <item
         android:id="@+id/tests_nav"
         android:icon="@drawable/ic_test"
         android:title="@string/text_nav_home" />

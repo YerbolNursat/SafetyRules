@@ -6,6 +6,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val mainProfileViewModelModule = module {
-    viewModel { ProfileViewModel() }
-    viewModel { EditProfileViewModel() }
+    viewModel { ProfileViewModel(getProfileInfoUseCase = get()) }
+    viewModel { EditProfileViewModel(getProfileInfoUseCase = get(), setProfileInfoUseCase = get()) }
 }

@@ -19,6 +19,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,41 +39,170 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_28"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/detail_first" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/testDetailRv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                <ImageView
+                <SeekBar
+                    android:id="@+id/simpleProgressBar"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_4"
+                    android:layout_height="4dp"
                     android:layout_marginTop="@dimen/dp_16"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/detail_second" />
+                    android:background="@null"
+                    android:max="100"
+                    android:padding="@dimen/dp_0"
+                    android:paddingStart="@dimen/dp_0"
+                    android:paddingEnd="@dimen/dp_0"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/bg_progress"
+                    android:shape="oval"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/oval_seekbar_thumb"
+                    android:thumbOffset="@dimen/dp_6"
+                    android:visibility="gone"
+                    tools:progress="99" />
 
                 <TextView
+                    android:id="@+id/titleTv"
                     style="@style/H6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dp_16"
-                    android:gravity="center"
-                    android:text="При аварии необходимо:"
+                    android:gravity="center_horizontal"
                     android:textColor="@color/defaultGray" />
 
-                <ImageView
+                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_240"
+                    android:layout_height="@dimen/dp_80"
                     android:layout_marginTop="@dimen/dp_16"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/detail_third" />
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonOne"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_16"
+                            android:background="@null" />
+
+                        <TextView
+                            android:id="@+id/textOneTv"
+                            style="@style/regular16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:layout_marginEnd="@dimen/dp_16"
+                            android:layout_marginBottom="@dimen/dp_16"
+                            android:textColor="@color/defaultGray" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginTop="@dimen/dp_16"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_16"
+                            android:background="@null" />
+
+                        <TextView
+                            android:id="@+id/textTwoTv"
+                            style="@style/regular16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:layout_marginEnd="@dimen/dp_16"
+                            android:layout_marginBottom="@dimen/dp_16"
+                            android:textColor="@color/defaultGray" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_80"
+                    android:layout_marginTop="@dimen/dp_16"
+                    app:cardBackgroundColor="@color/secondaryWhite"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="@dimen/dp_3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonThree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_16"
+                            android:background="@null" />
+
+                        <TextView
+                            android:id="@+id/textThreeTv"
+                            style="@style/regular16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:layout_marginEnd="@dimen/dp_16"
+                            android:layout_marginBottom="@dimen/dp_16"
+                            android:textColor="@color/defaultGray" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
             layout="@layout/content_loading"
             android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE }"
             tools:visibility="gone" />
+
+        <include
+            android:id="@+id/btn_end_test"
+            layout="@layout/button_secondary_orange"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:layout_margin="@dimen/dp_16"
+            android:visibility="gone"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="bottom|center" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
