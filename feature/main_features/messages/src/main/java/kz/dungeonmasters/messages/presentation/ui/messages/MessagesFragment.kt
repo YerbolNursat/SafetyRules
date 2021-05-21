@@ -40,6 +40,7 @@ class MessagesFragment : CoreFragment<FragmentMessagesBinding, MessagesViewModel
         Timber.i("setupAdapter")
         val adapter = MessagesAdapter(this)
         binding.viewPager.adapter = adapter
+        binding.viewPager.isUserInputEnabled = false
         val tabLayoutMediator =
             TabLayoutMediator(binding.tabLayout, binding.viewPager, ::setupTabLayoutMediator)
         tabLayoutMediator.attach()

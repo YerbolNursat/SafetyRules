@@ -6,14 +6,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kz.dungeonmasters.main.R
+import kz.dungeonmasters.core.core_application.presentation.ui.Navigator
 import kz.dungeonmasters.core.core_application.presentation.ui.activities.CoreAuthorizedActivity
 import kz.dungeonmasters.core.core_application.utils.extensions.gone
 import kz.dungeonmasters.core.core_application.utils.extensions.setupWithNavController
 import kz.dungeonmasters.core.core_application.utils.extensions.visible
+import kz.dungeonmasters.main.R
 import timber.log.Timber
 
-class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
+class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main), Navigator {
     private var currentNavController: LiveData<NavController>? = null
     private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,7 @@ class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
         return currentNavController?.value?.navigateUp() ?: false
     }
 
+
     private fun onControllerChanged(data: NavController) {
         Timber.i("onControllerChanged, data: $data")
         data.addOnDestinationChangedListener { _, destination, _ ->
@@ -78,4 +80,16 @@ class MainActivity : CoreAuthorizedActivity(lay = R.layout.activity_main) {
             }
         }
     }
+
+    override fun toTest(TestId: String) {
+
+        bottomNavigationView.selectedItemId = R.id.tests_nav
+        openDeepLink(DEEP_LINK_TEST + TestId)
+
+    }
+
+    companion object {
+        const val DEEP_LINK_TEST = "https://forward.dungeonmasters.kz/test?TestId="
+    }
+
 }

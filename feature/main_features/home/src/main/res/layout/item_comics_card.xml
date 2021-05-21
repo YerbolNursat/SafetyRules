@@ -35,6 +35,7 @@
 
             <TextView
                 style="@style/regular16"
+                android:onClick="@{_ -> item.actionToNavigate.invoke()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ещё"

@@ -7,7 +7,8 @@ import kz.dungeonmasters.home.R
 import kz.dungeonmasters.home.databinding.ItemComicsCardBinding
 
 class ComicsCardUi(
-    val listOfComics:List<ComicsUi>
+    val actionToNavigate: (() -> Unit),
+    val listOfComics: List<ComicsUi>
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
@@ -18,5 +19,6 @@ class ComicsCardUi(
     }
 
     override fun getLayout(): Int = R.layout.item_comics_card
-    override fun initializeViewBinding(view: View): ViewDataBinding = ItemComicsCardBinding.bind(view)
+    override fun initializeViewBinding(view: View): ViewDataBinding =
+        ItemComicsCardBinding.bind(view)
 }

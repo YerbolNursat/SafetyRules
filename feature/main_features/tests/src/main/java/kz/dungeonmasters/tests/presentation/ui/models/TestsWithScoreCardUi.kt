@@ -10,7 +10,7 @@ data class TestsWithScoreCardUi(
     val id: String,
     val title: String,
     val is_active: Boolean,
-    val score: Int?,
+    val score: String?,
     val body: String?,
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {

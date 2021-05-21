@@ -9,6 +9,6 @@ import org.koin.dsl.module
 val mainMessagesViewModelModule = module {
     viewModel { MessagesViewModel() }
     viewModel { ForumViewModel() }
-    viewModel { NotificationsViewModel() }
+    viewModel { NotificationsViewModel(getNotificationsUseCase = get(),getNotificationsDetailUseCase = get()) }
 
 }

@@ -3,7 +3,9 @@ package kz.dungeonmasters.tests.presentation.ui.test_detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kz.dungeonmasters.core.core_application.presentation.viewModel.CoreLaunchViewModel
+import kz.dungeonmasters.core.core_application.utils.events.Event
 import kz.dungeonmasters.tests.R
+import kz.dungeonmasters.tests.data.entity.TestAnswersResponse
 import kz.dungeonmasters.tests.data.entity.TestQuestions
 import kz.dungeonmasters.tests.domain.usecase.CheckTestUseCase
 import kz.dungeonmasters.tests.domain.usecase.GetTestQuestionsUseCase
@@ -22,6 +24,7 @@ class TestDetailViewModel(
 
     val isChecked = MutableLiveData(false)
     val toolbarText = MutableLiveData<String>()
+    val showDialog = MutableLiveData<Event<TestAnswersResponse>>()
 
     fun getTestQuestions(params: String) {
         launch({ getTestQuestionsUseCase.execute(params) }, {
@@ -53,14 +56,15 @@ class TestDetailViewModel(
         launch({ checkTestUseCase.execute(params) }, {
             it?.let {
                 listOfData.keys.onEachIndexed { index, testQuestionNumberUi ->
-                    if (it.accepted_answers[index].is_correct){
+                    if (it.accepted_answers[index].is_correct) {
                         testQuestionNumberUi.value.numberColor = R.color.green
-                    }else{
+                    } else {
                         testQuestionNumberUi.value.numberColor = R.color.red
                     }
                 }
+                showDialog.postValue(Event(it))
+                isChecked.postValue(true)
             }
-            isChecked.postValue(true)
         })
     }
 }

@@ -12,7 +12,7 @@ private const val RFC3339 = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 private fun parseDate(date: String): Date? {
     return try {
         val sdf = SimpleDateFormat(RFC3339, Locale.getDefault())
-        sdf.timeZone = TimeZone.getTimeZone("GTM")
+//        sdf.timeZone = TimeZone.getTimeZone("GTM")
         sdf.parse(date)
     } catch (e: Exception) {
         null
@@ -42,9 +42,9 @@ fun dateForItemRequest(date: String, context: Context): String? {
     }
 }
 
-fun dateForDetailRequest(date: String): String? {
+fun dateForNotification(date: String): String? {
     val parsedDate = parseDate(date)
-    return parsedDate?.let { SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault()).format(it) }
+    return parsedDate?.let { SimpleDateFormat("dd.MM,HH:mm", Locale.getDefault()).format(it) }
 }
 
 fun isSameDay(firstDate: String, secondDate: String): Boolean {

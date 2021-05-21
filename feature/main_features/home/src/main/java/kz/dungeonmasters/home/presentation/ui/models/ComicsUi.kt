@@ -1,6 +1,7 @@
 package kz.dungeonmasters.home.presentation.ui.models
 
 import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.xwray.groupie.viewbinding.BindableItem
 import kz.dungeonmasters.home.R
@@ -12,12 +13,18 @@ data class ComicsUi(
     val title: String?,
     val url: String,
     val icon: String,
-    var actionOnClick: ((String, String) -> Unit)? = null
+    var actionOnClick: ((String, String) -> Unit)? = null,
+    var maxSize: Boolean? = false
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {
             is ItemComicsBinding -> {
                 viewBinding.item = this
+                if (maxSize == true) {
+                    val params: ViewGroup.MarginLayoutParams =
+                        viewBinding.root.layoutParams as ViewGroup.MarginLayoutParams
+                    params.width = ViewGroup.LayoutParams.MATCH_PARENT
+                }
             }
         }
     }

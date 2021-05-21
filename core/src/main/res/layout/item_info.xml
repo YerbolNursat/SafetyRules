@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+        <variable
+            name="item"
+            type="kz.dungeonmasters.core.core_application.presentation.model.InfoUi" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/semiBold16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@{item.subtitle}"
+            android:textColor="#000000" />
+
+        <TextView
+            style="@style/regular12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@{item.text}"
+            android:textColor="#000000" />
+    </LinearLayout>
+</layout>

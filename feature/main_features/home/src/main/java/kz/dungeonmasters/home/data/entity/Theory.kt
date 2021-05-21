@@ -34,5 +34,6 @@ data class Quiz(
     val body: String?,
     val id: Int,
     val score: Int,
-    val title: String?
+    val title: String?,
+    val is_active:Boolean
 )

@@ -17,15 +17,22 @@
         android:id="@+id/theoryFragment"
         android:name="kz.dungeonmasters.home.presentation.ui.theory.TheoryFragment"
         android:label="TheoryFragment"
-        tools:layout="@layout/fragment_theory" >
+        tools:layout="@layout/fragment_theory">
         <action
             android:id="@+id/action_theoryFragment_to_pdfViewerFragment"
             app:destination="@id/pdfViewerFragment" />
+        <action
+            android:id="@+id/action_theoryFragment_to_comicsFragment"
+            app:destination="@id/comicsFragment" />
+        <action
+            android:id="@+id/action_theoryFragment_to_instructionsFragment"
+            app:destination="@id/instructionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/pdfViewerFragment"
+        tools:layout="@layout/fragment_pdf_viewer"
         android:name="kz.dungeonmasters.home.presentation.ui.pdf_viewer.PdfViewerFragment"
-        android:label="PdfViewerFragment" >
+        android:label="PdfViewerFragment">
         <argument
             android:name="filePath"
             app:argType="string" />
@@ -34,5 +41,19 @@
             app:argType="string" />
 
     </fragment>
+    <fragment
+        android:id="@+id/comicsFragment"
+        android:name="kz.dungeonmasters.home.presentation.ui.comics.ComicsFragment"
+        android:label="ComicsFragment"
+        tools:layout="@layout/fragment_comics" >
+        <action
+            android:id="@+id/action_comicsFragment_to_pdfViewerFragment"
+            app:destination="@id/pdfViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionsFragment"
+        tools:layout="@layout/fragment_instructions"
+        android:name="kz.dungeonmasters.home.presentation.ui.instructions.InstructionsFragment"
+        android:label="InstructionsFragment" />
 
 </navigation>

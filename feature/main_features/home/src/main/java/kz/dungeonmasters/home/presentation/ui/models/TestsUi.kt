@@ -10,7 +10,9 @@ class TestsUi(
     val id: Int,
     val title: String?,
     val score: Int,
-    val body: String?
+    val body: String?,
+    val is_active: Boolean,
+    var navigateToTest: (() -> Unit)? = null
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {

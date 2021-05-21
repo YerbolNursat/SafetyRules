@@ -36,6 +36,7 @@
                 style="@style/regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{_ -> item.actionToNavigate.invoke()}"
                 android:text="Ещё"
                 android:textColor="@color/orange" />
 
@@ -46,12 +47,12 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/dp_4"
             android:paddingStart="@dimen/dp_12"
+            android:paddingTop="@dimen/dp_4"
             android:paddingEnd="@dimen/dp_12"
-            app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:setBindingItems="@{item.listOfInstructions}" />
+            app:setBindingItems="@{item.listOfInstructions}"
+            app:spanCount="2" />
 
     </LinearLayout>
 </layout>

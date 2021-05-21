@@ -3,20 +3,24 @@ package kz.dungeonmasters.tests.presentation.ui.test_detail
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kz.dungeonmasters.core.core_application.presentation.content.CoreButton
 import kz.dungeonmasters.core.core_application.presentation.content.CoreSimpleToolbar
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
+import kz.dungeonmasters.core.core_application.utils.events.EventObserver
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButton
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitSimpleToolbar
 import kz.dungeonmasters.core.core_application.utils.extensions.visible
 import kz.dungeonmasters.tests.BR
 import kz.dungeonmasters.tests.R
+import kz.dungeonmasters.tests.data.entity.TestAnswersResponse
 import kz.dungeonmasters.tests.data.entity.TestQuestions
 import kz.dungeonmasters.tests.databinding.FragmentTestDetailBinding
 import kz.dungeonmasters.tests.domain.usecase.CheckTestUseCase
 import kz.dungeonmasters.tests.presentation.ui.models.TestQuestionNumberUi
+import kz.dungeonmasters.tests.presentation.ui.notification.NotificationDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -33,6 +37,7 @@ class TestDetailFragment : CoreFragment<FragmentTestDetailBinding, TestDetailVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         testId = arguments?.getString("TestId")
+
         viewModel.getTestQuestions(testId!!)
         initViews()
     }
@@ -112,6 +117,31 @@ class TestDetailFragment : CoreFragment<FragmentTestDetailBinding, TestDetailVie
         viewModel.items.observe(viewLifecycleOwner, Observer(::handleItems))
         viewModel.toolbarText.observe(viewLifecycleOwner, Observer(::initToolbar))
         viewModel.isChecked.observe(viewLifecycleOwner, Observer(::initViewsAfterCheck))
+        viewModel.showDialog.observe(viewLifecycleOwner, EventObserver(::showDialog))
+    }
+
+    private fun showDialog(data: TestAnswersResponse) {
+        NotificationDialog(
+            requireActivity().supportFragmentManager,
+            data.title,
+            data.body,
+            "Отлично"
+        )
+        if (data.success) {
+            standardInitButton(
+                CoreButton(
+                    "Завершить тест",
+                    { findNavController().popBackStack() }), binding.btnEndTest.root
+            )
+
+        } else {
+            standardInitButton(
+                CoreButton(
+                    "Пройти повторно тест",
+                    { viewModel.getTestQuestions(testId.toString()) }), binding.btnEndTest.root
+            )
+
+        }
     }
 
     private fun initViewsAfterCheck(data: Boolean) {
@@ -119,11 +149,6 @@ class TestDetailFragment : CoreFragment<FragmentTestDetailBinding, TestDetailVie
             binding.radioButtonOne.isEnabled = false
             binding.radioButtonTwo.isEnabled = false
             binding.radioButtonThree.isEnabled = false
-            standardInitButton(
-                CoreButton(
-                    "Пройти повторно тест",
-                    { viewModel.getTestQuestions(testId.toString()) }), binding.btnEndTest.root
-            )
         }
     }
 

@@ -20,8 +20,8 @@ class CheckTestUseCase(
     )
 
     data class Params(
-        val option: String,
-        val question: String
+        val question: String,
+        val option: String
     )
 
 }

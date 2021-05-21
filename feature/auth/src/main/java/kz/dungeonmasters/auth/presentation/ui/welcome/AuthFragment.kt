@@ -22,7 +22,6 @@ import kz.dungeonmasters.core.core_application.utils.extensions.standardInitButt
 import kz.dungeonmasters.core.core_application.utils.extensions.visible
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class AuthFragment : CoreFragment<FragmentAuthBinding, AuthViewModel>() {
 

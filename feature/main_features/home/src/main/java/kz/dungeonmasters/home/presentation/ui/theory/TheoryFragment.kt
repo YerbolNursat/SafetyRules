@@ -3,6 +3,7 @@ package kz.dungeonmasters.home.presentation.ui.theory
 import android.Manifest
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -11,12 +12,16 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.viewbinding.BindableItem
 import kz.dungeonmasters.core.core_application.presentation.content.CoreSimpleToolbar
+import kz.dungeonmasters.core.core_application.presentation.model.InfoResponseUi
+import kz.dungeonmasters.core.core_application.presentation.model.InfoUi
+import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.ModalBottomSheetDialog
 import kz.dungeonmasters.core.core_application.presentation.ui.fragments.CoreFragment
 import kz.dungeonmasters.core.core_application.utils.events.EventObserver
 import kz.dungeonmasters.core.core_application.utils.extensions.standardInitSimpleToolbar
 import kz.dungeonmasters.home.BR
 import kz.dungeonmasters.home.R
 import kz.dungeonmasters.home.databinding.FragmentTheoryBinding
+import kz.dungeonmasters.home.presentation.ui.models.InstructionUi
 import kz.dungeonmasters.home.presentation.ui.models.VideosCardUi
 import kz.dungeonmasters.home.presentation.ui.pdf_viewer.PdfLoaded
 import kz.dungeonmasters.home.presentation.ui.pdf_viewer.PdfViewerFragmentArgs
@@ -24,7 +29,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
-
+    private lateinit var categoryCode:String
     private val groupAdapter = GroupAdapter<GroupieViewHolder>()
 
     override val viewModel: TheoryViewModel by viewModel()
@@ -34,7 +39,7 @@ class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val categoryCode = arguments?.get("CategoryCode") as String
+        categoryCode = arguments?.get("CategoryCode") as String
         viewModel.getItems(categoryCode)
 
         initViews()
@@ -58,6 +63,44 @@ class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
         viewModel.items.observe(viewLifecycleOwner, Observer(::handleItems))
         viewModel.startDownload.observe(viewLifecycleOwner, EventObserver(::startDownload))
         viewModel.pdfLoaded.observe(viewLifecycleOwner, EventObserver(::navigateToPdfViewer))
+        viewModel.toComics.observe(viewLifecycleOwner, EventObserver(::navigateToComics))
+        viewModel.toInstructions.observe(
+            viewLifecycleOwner,
+            EventObserver(::navigateToInstructions)
+        )
+        viewModel.toTest.observe(viewLifecycleOwner, EventObserver(::navigateToTest))
+        viewModel.toInstructionDetail.observe(
+            viewLifecycleOwner,
+            EventObserver(::navigateToInstructionDetail)
+        )
+    }
+
+    private fun navigateToInstructionDetail(data: InfoResponseUi) {
+        ModalBottomSheetDialog(
+            listOf(
+                data
+            ),
+            requireContext(),
+            true,
+            peekHide = resources.displayMetrics.heightPixels
+        )
+    }
+
+    private fun navigateToTest(data: String) {
+        navigator?.toTest(data)
+    }
+
+    private fun navigateToComics(data: Unit) {
+        findNavController().navigate(
+            R.id.action_theoryFragment_to_comicsFragment, bundleOf("CategoryCode" to categoryCode)
+        )
+    }
+
+    private fun navigateToInstructions(data: Unit) {
+        findNavController().navigate(
+            R.id.action_theoryFragment_to_instructionsFragment,
+            bundleOf("CategoryCode" to categoryCode)
+        )
     }
 
     private fun handleItems(data: List<BindableItem<ViewDataBinding>>) {
@@ -82,7 +125,8 @@ class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
 
     private fun navigateToPdfViewer(pdfLoaded: PdfLoaded) {
         findNavController().navigate(
-            R.id.action_theoryFragment_to_pdfViewerFragment, PdfViewerFragmentArgs(pdfLoaded.filePath, pdfLoaded.title).toBundle()
+            R.id.action_theoryFragment_to_pdfViewerFragment,
+            PdfViewerFragmentArgs(pdfLoaded.filePath, pdfLoaded.title).toBundle()
         )
 
     }

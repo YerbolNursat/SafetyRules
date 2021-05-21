@@ -7,11 +7,12 @@ import kz.dungeonmasters.messages.R
 import kz.dungeonmasters.messages.databinding.ItemNotificationCardBinding
 
 data class NotificationCardUi(
+    val id:String,
     val isRead: Boolean,
-    val nameOfNotification: String,
-    val date: String,
-    val title: String,
-    val subTitle: String,
+    val nameOfNotification: String?,
+    val date: String?,
+    val title: String?,
+    val subTitle: String?,
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {

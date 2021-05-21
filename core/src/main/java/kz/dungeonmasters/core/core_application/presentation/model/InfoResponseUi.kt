@@ -1,15 +1,14 @@
-package kz.dungeonmasters.profile.presentation.ui.models_bottom
+package kz.dungeonmasters.core.core_application.presentation.model
 
 import android.view.View
 import androidx.databinding.ViewDataBinding
+import kz.dungeonmasters.core.core_application.R
+import kz.dungeonmasters.core.core_application.databinding.ItemBottomInfoBinding
 import kz.dungeonmasters.core.core_application.presentation.ui.dialogs.BaseBottomSheetDialogItem
-import kz.dungeonmasters.profile.R
-import kz.dungeonmasters.profile.databinding.ItemBottomInfoBinding
 
-data class InfoUi(
+data class InfoResponseUi(
     val title: String,
-    val subtitle: String,
-    val text: String
+    val listOfUi: List<InfoUi>
 ) : BaseBottomSheetDialogItem() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {
         when (viewBinding) {

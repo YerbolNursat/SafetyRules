@@ -10,7 +10,7 @@ data class TestsResponse(
 data class Tests(
     val body: String?,
     val id: String,
-    val score: Int?,
+    val score: String?,
     val title: String,
     val is_active: Boolean,
 )
