@@ -42,6 +42,7 @@ class TheoryViewModel(
     }
 
     val toComics = MutableLiveData<Event<Unit>>()
+    val toVideos = MutableLiveData<Event<Unit>>()
     val toInstructions = MutableLiveData<Event<Unit>>()
     val toInstructionDetail = MutableLiveData<Event<InfoResponseUi>>()
     val toTest = MutableLiveData<Event<String>>()
@@ -61,7 +62,12 @@ class TheoryViewModel(
 
                 val listOfVideos: List<VideoUi> =
                     it.videos.map { videos -> videos.transformFromOneObjectToAnother() }
-                data.add(VideosCardUi(listOfVideos))
+                data.add(
+                    VideosCardUi(
+                        { toVideos.postValue(Event(Unit)) },
+                        listOfVideos
+                    )
+                )
 
                 val listOfInstructions: List<InstructionUi> =
                     it.articles.map { articles ->

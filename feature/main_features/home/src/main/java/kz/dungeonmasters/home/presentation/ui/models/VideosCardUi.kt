@@ -7,6 +7,7 @@ import kz.dungeonmasters.home.R
 import kz.dungeonmasters.home.databinding.ItemVideosCardBinding
 
 data class VideosCardUi(
+    val actionToNavigate: (() -> Unit),
     val listOfVideos: List<VideoUi>
 ) : BindableItem<ViewDataBinding>() {
     override fun bind(viewBinding: ViewDataBinding, position: Int) {

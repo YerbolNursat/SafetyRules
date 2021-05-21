@@ -47,6 +47,11 @@ fun dateForNotification(date: String): String? {
     return parsedDate?.let { SimpleDateFormat("dd.MM,HH:mm", Locale.getDefault()).format(it) }
 }
 
+fun dateForAchievements(date: String): String? {
+    val parsedDate = parseDate(date)
+    return parsedDate?.let { SimpleDateFormat("dd.MM.yy", Locale.getDefault()).format(it) }
+}
+
 fun isSameDay(firstDate: String, secondDate: String): Boolean {
     val firstParsedDate = parseDate(firstDate)
     val secondParsedDate = parseDate(secondDate)

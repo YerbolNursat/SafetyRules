@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="item"
+            type="kz.dungeonmasters.profile.presentation.ui.models.AchievementsUi" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_4"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/dp_16"
+        app:cardElevation="@dimen/dp_2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:src="@{item._done ? @drawable/ic_achiev_done : @drawable/ic_achiev_not_done}" />
+
+                <TextView
+                    style="@style/regular12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:text="@{item._done ? item.created_at : `--/--/--`}"
+                    android:textColor="@{item._done ? @color/light_orange : @color/secondary}" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/regular16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:text="@{item.body}"
+                android:textColor="@{item._done ? @color/light_orange : @color/secondary}" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

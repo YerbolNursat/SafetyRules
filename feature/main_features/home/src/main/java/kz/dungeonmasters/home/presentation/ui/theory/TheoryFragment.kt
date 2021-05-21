@@ -64,6 +64,7 @@ class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
         viewModel.startDownload.observe(viewLifecycleOwner, EventObserver(::startDownload))
         viewModel.pdfLoaded.observe(viewLifecycleOwner, EventObserver(::navigateToPdfViewer))
         viewModel.toComics.observe(viewLifecycleOwner, EventObserver(::navigateToComics))
+        viewModel.toVideos.observe(viewLifecycleOwner, EventObserver(::navigateToVideos))
         viewModel.toInstructions.observe(
             viewLifecycleOwner,
             EventObserver(::navigateToInstructions)
@@ -93,6 +94,12 @@ class TheoryFragment : CoreFragment<FragmentTheoryBinding, TheoryViewModel>() {
     private fun navigateToComics(data: Unit) {
         findNavController().navigate(
             R.id.action_theoryFragment_to_comicsFragment, bundleOf("CategoryCode" to categoryCode)
+        )
+    }
+
+    private fun navigateToVideos(data: Unit) {
+        findNavController().navigate(
+            R.id.action_theoryFragment_to_videosFragment, bundleOf("CategoryCode" to categoryCode)
         )
     }
 

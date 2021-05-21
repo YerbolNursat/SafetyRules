@@ -23,7 +23,12 @@ interface HomeApi {
     @GET("/topics/{topic_code}/comics/")
     suspend fun getComics(
         @Path("topic_code") topic_code: String
-    ):Comics
+    ): Comics
+
+    @GET("/topics/{topic_code}/videos/")
+    suspend fun getVideos(
+        @Path("topic_code") topic_code: String
+    ): Videos
 
     @GET("/topics/{topic_code}/articles/{article_code}/")
     suspend fun getArticleDetail(

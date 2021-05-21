@@ -27,6 +27,10 @@ class HomeRepository(private val homeApi: HomeApi) {
         homeApi.getComics(param)
     }
 
+    suspend fun getVideos(param: String): ResultApi<Videos> = safeApiCall {
+        homeApi.getVideos(param)
+    }
+
     suspend fun getArticleDetail(param: GetArticlesDetailUseCase.Params): ResultApi<Article> = safeApiCall {
         homeApi.getArticleDetail(param.topic_code,param.article_code)
     }

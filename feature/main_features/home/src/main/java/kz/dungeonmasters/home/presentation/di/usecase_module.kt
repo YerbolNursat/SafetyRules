@@ -12,5 +12,6 @@ val mainHomeUseCaseModule = module {
     single { GetArticlesUseCase(homeRepository = get()) }
     single { GetArticlesDetailUseCase(homeRepository = get()) }
     single { GetComicsUseCase(homeRepository = get()) }
+    single { GetVideosUseCase(homeRepository = get()) }
 
 }
